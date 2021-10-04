@@ -22,7 +22,7 @@ public class LoadingScreen : MonoBehaviour
             if (sceneLoading.progress >= 0.9f)                                      //Si le chargement de la scène de jeu est terminé
             {
                 if sceneLoading.allowSceneActivision = true;                        //On autorise la scène du jeu à se lancer
-                prefab.GetComponent<Animator>().SetTrigger("disparapaître");        //On lance l'animation "disparaitre" (fondu) de l'écran de chargement
+                prefab.GetComponent<Animator>().SetTrigger("Disappear");        //On lance l'animation "disparaitre" (fondu) de l'écran de chargement
             }
             yield return new WaitForSeconds(1);                                     //On attend une seconde
         }
