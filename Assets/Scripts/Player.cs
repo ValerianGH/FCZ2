@@ -54,12 +54,8 @@ public class Player : MonoBehaviour
     private void Attacking()
     {
         
+
     }      
-
-    private void Update()
-    {
-
-    }
 
     void FixedUpdate()
     {   
