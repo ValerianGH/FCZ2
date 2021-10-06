@@ -55,7 +55,12 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Help");                   //On met la scène des Aides
     }
 
-    public void Credits()                                       //Fonction pour charger la scène des Credits
+    public void Credits()                                      //Fonction pour charger la scène des Credits
+    {
+        SceneManager.LoadScene("Credits");                      //On met la scène des Credits
+    }
+
+    public void Settings()                                      //Fonction pour charger la scène des Credits
     {
         SceneManager.LoadScene("Credits");                      //On met la scène des Credits
     }
