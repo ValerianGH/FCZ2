@@ -9,12 +9,10 @@ public class Ennemies : MonoBehaviour
     public GameObject objectToDestroy;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GetComponent<Player>())
+        if (GetComponent<HPManager>())
         {
-            collision.GetComponent<Player>().HP -= damages;
+            collision.GetComponent<HPManager>().HP -= damages;
             Destroy(objectToDestroy);
-            
         }
-
     }
 }

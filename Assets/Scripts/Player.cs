@@ -7,14 +7,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
-    [SerializeField] public int maxHP;
-    
-    
+
     private Animator animator;
     private Rigidbody2D rb2D;
     private Controls controls;
     private Vector2 direction;
-    public int HP;
 
     private void OnEnable()
     {
@@ -63,7 +60,6 @@ public class Player : MonoBehaviour
     {
 
     }
-
 
     void FixedUpdate()
     {   
