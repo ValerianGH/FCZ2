@@ -8,15 +8,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenuUI;  //On récupère l'UI du menu pause
     [SerializeField] private GameObject WinUI;        //On récupère l'UI de victoire
-    private Controls controls;
     private static bool gamePaused = false;           //Variable pour savoir si le jeu est en pause (= fausse)
-
-    private void OnEnable()
-    {
-        controls = new Controls();
-        controls.Enable();
-        controls.Main.Pause.performed += PausePerformed; //On récupère l'input "Echap"
-    }
 
     private void PausePerformed(InputAction.CallbackContext obj) //Fonction exécutée quand on appuie sur Echap
     {
@@ -47,7 +39,7 @@ public class Menu : MonoBehaviour
 
     public void Play()                                  //Fonction pour charger la scène pour lancer le Jeu
     {
-        SceneManager.LoadScene("FCZ");           //On met la scène du Jeu
+        SceneManager.LoadScene("Play");           //On met la scène du Jeu
     }
 
     public void Help()                                    //Fonction pour charger la scène des Aides
@@ -62,7 +54,7 @@ public class Menu : MonoBehaviour
 
     public void Settings()                                      //Fonction pour charger la scène des Credits
     {
-        SceneManager.LoadScene("Credits");                      //On met la scène des Credits
+        SceneManager.LoadScene("Settings");                      //On met la scène des Credits
     }
 
     public void Main()                                            //Fonction pour charger la scène du Menu
