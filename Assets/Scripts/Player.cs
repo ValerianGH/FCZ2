@@ -7,20 +7,17 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
-    [SerializeField] private int maxHP;
+    [SerializeField] public int maxHP;
     
     
     private Animator animator;
     private Rigidbody2D rb2D;
     private Controls controls;
-    private Ennemies ennemies;
-    private float direction;
-    private int currentHP;
-    private int damages;
+    private Vector2 direction;
+    public int HP;
 
     private void OnEnable()
     {
-        ennemies = new Ennemies();
         controls = new Controls();
         controls.Enable();
         controls.Main.Move.performed += MovePerformed;
@@ -31,13 +28,13 @@ public class Player : MonoBehaviour
     
     private void MovePerformed(InputAction.CallbackContext obj)
     {
-        direction = obj.ReadValue<float>();
+        direction = obj.ReadValue<Vector2>();
         animator.SetBool("moving", true);
     }
 
     private void MoveCanceled(InputAction.CallbackContext obj)
     {
-        direction = 0;
+        direction = Vector2.zero;
         animator.SetBool("moving", false);
     }
 
@@ -60,40 +57,19 @@ public class Player : MonoBehaviour
     private void Attacking()
     {
         
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Ennemies"))
-        {
-            TakingDamages();
-        }
-    }            
-
-    void TakingDamages()
-    {
-        currentHP = maxHP - ennemies.damages;
-    }
+    }      
 
     private void Update()
     {
-        Debug.Log(maxHP);
-        Debug.Log(ennemies.damages);
+
     }
-
-
-
 
 
     void FixedUpdate()
-    {
-        var horizontalSpeed = Mathf.Abs(rb2D.velocity.x);
-        var verticalSpeed = Mathf.Abs(rb2D.velocity.y);
-        if (horizontalSpeed < maxspeed && verticalSpeed < maxspeed);
+    {   
+        if(rb2D.velocity.magnitude < maxspeed)
         {
-            rb2D.AddForce(new Vector2(speed * direction, 0));
+            rb2D.AddForce(direction * speed * direction.magnitude);
         }
     }
-
-
 }
