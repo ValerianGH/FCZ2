@@ -9,19 +9,19 @@ public class LoadingScreen : MonoBehaviour
 
     public void LoadSceneAsync()                                                    //Fonction pour charger la scène de jeu en fond pendant qu'on affiche l'écran de chargement
     {
-        StartCoroutine(LoadingScreenCorountine());                                  //On lance une Coroutine pour l'écran de chargement
+        StartCoroutine(LoadingScreenCoroutine());                                  //On lance une Coroutine pour l'écran de chargement
     }
     private IEnumerator LoadingScreenCoroutine()
     {
         var prefab = Instantiate(loadingScreenPrefab);                              //On stocke le préfab de l'écran de chargement
         DontDestroyOnLoad(prefab);                                                  //On empeche la destruction d' l'écran de chargement lors du changement de scène
-        var sceneLoading = SceneManager.LoadSceneAsync("Platformer");               //On stocke dans la variable sceneLoading, la scène du jeu qui se charge en arrière plan
+        var sceneLoading = SceneManager.LoadSceneAsync("FCZ");               //On stocke dans la variable sceneLoading, la scène du jeu qui se charge en arrière plan
         sceneLoading.allowSceneActivation = false;                                  //On interdit à la scène du jeu de se lancer
         while (sceneLoading.isDone == false)                                        //Tant que la scène de jeu n'est pas chargée
         {
             if (sceneLoading.progress >= 0.9f)                                      //Si le chargement de la scène de jeu est terminé
             {
-                if sceneLoading.allowSceneActivision = true;                        //On autorise la scène du jeu à se lancer
+                if (sceneLoading.allowSceneActivision = true);                        //On autorise la scène du jeu à se lancer
                 prefab.GetComponent<Animator>().SetTrigger("Disappear");        //On lance l'animation "disparaitre" (fondu) de l'écran de chargement
             }
             yield return new WaitForSeconds(1);                                     //On attend une seconde
