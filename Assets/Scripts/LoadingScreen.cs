@@ -15,7 +15,7 @@ public class LoadingScreen : MonoBehaviour
     {
         var prefab = Instantiate(loadingScreenPrefab);                              //On stocke le pr�fab de l'�cran de chargement
         DontDestroyOnLoad(prefab);                                                  //On empeche la destruction d' l'�cran de chargement lors du changement de sc�ne
-        var sceneLoading = SceneManager.LoadSceneAsync("FCZ");               //On stocke dans la variable sceneLoading, la sc�ne du jeu qui se charge en arri�re plan
+        var sceneLoading = SceneManager.LoadSceneAsync("Play");               //On stocke dans la variable sceneLoading, la sc�ne du jeu qui se charge en arri�re plan
         sceneLoading.allowSceneActivation = false;                                  //On interdit � la sc�ne du jeu de se lancer
         while (sceneLoading.isDone == false)                                        //Tant que la sc�ne de jeu n'est pas charg�e
         {
