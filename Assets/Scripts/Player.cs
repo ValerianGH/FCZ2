@@ -7,14 +7,20 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
-
+    [SerializeField] private int maxHP;
+    
+    
     private Animator animator;
     private Rigidbody2D rb2D;
     private Controls controls;
+    private Ennemies ennemies;
     private float direction;
+    private int currentHP;
+    private int damages;
 
     private void OnEnable()
     {
+        ennemies = new Ennemies();
         controls = new Controls();
         controls.Enable();
         controls.Main.Move.performed += MovePerformed;
@@ -55,6 +61,29 @@ public class Player : MonoBehaviour
     {
         
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Ennemies"))
+        {
+            TakingDamages();
+        }
+    }            
+
+    void TakingDamages()
+    {
+        currentHP = maxHP - ennemies.damages;
+    }
+
+    private void Update()
+    {
+        Debug.Log(maxHP);
+        Debug.Log(ennemies.damages);
+    }
+
+
+
+
 
     void FixedUpdate()
     {
