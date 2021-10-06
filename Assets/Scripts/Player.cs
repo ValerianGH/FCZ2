@@ -27,12 +27,16 @@ public class Player : MonoBehaviour
     {
         direction = obj.ReadValue<Vector2>();
         animator.SetBool("moving", true);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Horizontal", direction.x);
     }
 
     private void MoveCanceled(InputAction.CallbackContext obj)
     {
         direction = Vector2.zero;
         animator.SetBool("moving", false);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Horizontal", direction.x);
     }
 
     private void AttackPerformed(InputAction.CallbackContext obj)
