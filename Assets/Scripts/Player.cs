@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
     [SerializeField] private int damages;
+    [SerializeField] Transform SpawnPoint;
 
     private Animator animator;
     private Rigidbody2D rb2D;
@@ -16,7 +17,6 @@ public class Player : MonoBehaviour
     private Vector2 direction;
     public Transform attackPoint;
     public LayerMask enemyLayers;
-    private int health;
     public float attackRange = 0.5f;
 
     private void OnEnable()

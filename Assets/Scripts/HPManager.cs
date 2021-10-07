@@ -5,11 +5,21 @@ using UnityEngine;
 public class HPManager : MonoBehaviour
 {
     public int HP;
-    
-    void Update()
+    private int maxHP;
+
+    private void Start()
     {
-        if (HP == 0)
-            Destroy(gameObject);
+        maxHP = HP;
     }
 
+    void Update()
+    {
+        if (HP == 0) // TOUS
+        {
+            Debug.Log(HP);
+            Destroy(gameObject); // enemy only
+        }
+        //transform.position = SpawnPoint.position; // player only
+        //HP = maxHP; // player only
+    }
 }
