@@ -9,6 +9,8 @@ public class SettingsMenu : MonoBehaviour
 
     public TMP_Dropdown resolutionDropdown;
 
+    public FullScreenMode fullScreen;
+
     Resolution[] resolutions;
 
     public void Start()
@@ -34,6 +36,8 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        Screen.fullScreen = true;
     }
 
     public void SetVolume(float volume) //On ajoute le paramètre FloatVolume
