@@ -8,15 +8,9 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenuUI;  //On récupère l'UI du menu pause
     [SerializeField] private GameObject WinUI;        //On récupère l'UI de victoire
-    private Controls controls;
+
     private static bool gamePaused = false;           //Variable pour savoir si le jeu est en pause (= fausse)
 
-    private void OnEnable()
-    {
-        controls = new Controls();
-        controls.Enable();
-        controls.Main.Pause.performed += PausePerformed; //On récupère l'input "Echap"
-    }
 
     private void PausePerformed(InputAction.CallbackContext obj) //Fonction exécutée quand on appuie sur Echap
     {
