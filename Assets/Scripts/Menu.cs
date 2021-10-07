@@ -6,57 +6,60 @@ using UnityEngine.InputSystem;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private GameObject PauseMenuUI;  //On récupère l'UI du menu pause
-    [SerializeField] private GameObject WinUI;        //On récupère l'UI de victoire
-
+    [SerializeField] private GameObject PauseMenuUI;  //On rï¿½cupï¿½re l'UI du menu pause
+    [SerializeField] private GameObject WinUI;        //On rï¿½cupï¿½re l'UI de victoire
     private static bool gamePaused = false;           //Variable pour savoir si le jeu est en pause (= fausse)
 
-
-    private void PausePerformed(InputAction.CallbackContext obj) //Fonction exécutée quand on appuie sur Echap
+    private void PausePerformed(InputAction.CallbackContext obj) //Fonction exï¿½cutï¿½e quand on appuie sur Echap
     {
         if (gamePaused)                                          //Si la variable gamePaused est vraie
         {
-            Resume();                                            //On exécute la fonction Resume
+            Resume();                                            //On exï¿½cute la fonction Resume
         }
         else                                                     //Sinon si la variable gamePaused est fausse
         {
-            Paused();                                            //Alors on exécute la fonction Paused
+            Paused();                                            //Alors on exï¿½cute la fonction Paused
         }
     }
 
     private void Paused()                                 //Fonction qui active l'UI du menu pause
     {
         PauseMenuUI.SetActive(true);                      //On active l'UI menu pause
-        Time.timeScale = 0;                               //On arrête le temps (mouvement du joueur etc.)
-        gamePaused = true;                                //On passe la variable gamePaused à vraie pour pouvoir désactiver le menu pause lorsqu'on rappuiera sur Echap
-        WinUI.SetActive(false);                           //On désactive l'UI de victoire (pour ne pas que les UI ne se superposent lorsque l'UI de victoire est affichée et qu'on appuie sur echap)
+        Time.timeScale = 0;                               //On arrï¿½te le temps (mouvement du joueur etc.)
+        gamePaused = true;                                //On passe la variable gamePaused ï¿½ vraie pour pouvoir dï¿½sactiver le menu pause lorsqu'on rappuiera sur Echap
+        WinUI.SetActive(false);                           //On dï¿½sactive l'UI de victoire (pour ne pas que les UI ne se superposent lorsque l'UI de victoire est affichï¿½e et qu'on appuie sur echap)
     }
 
-    private void Resume()                                    //Fonction qui désactive l'UI du menu pause
+    private void Resume()                                    //Fonction qui dï¿½sactive l'UI du menu pause
     {
-        PauseMenuUI.SetActive(false);                        //On désactive l'UI menu pause
+        PauseMenuUI.SetActive(false);                        //On dï¿½sactive l'UI menu pause
         Time.timeScale = 1;                                  //Le temps reprend son cours 
-        gamePaused = false;                                  //On passe la variable gamePaused à faux pour pouvoir activer le menu pause lorsqu'on appuiera sur Echap
+        gamePaused = false;                                  //On passe la variable gamePaused ï¿½ faux pour pouvoir activer le menu pause lorsqu'on appuiera sur Echap
     }
 
-    public void Play()                                  //Fonction pour charger la scène pour lancer le Jeu
+    public void Play()                                  //Fonction pour charger la scï¿½ne pour lancer le Jeu
     {
-        SceneManager.LoadScene("FCZ");           //On met la scène du Jeu
+        SceneManager.LoadScene("Play");           //On met la scï¿½ne du Jeu
     }
 
-    public void Help()                                    //Fonction pour charger la scène des Aides
+    public void Help()                                    //Fonction pour charger la scï¿½ne des Aides
     {
-        SceneManager.LoadScene("Help");                   //On met la scène des Aides
+        SceneManager.LoadScene("Help");                   //On met la scï¿½ne des Aides
     }
 
-    public void Credits()                                       //Fonction pour charger la scène des Credits
+    public void Credits()                                      //Fonction pour charger la scï¿½ne des Credits
     {
-        SceneManager.LoadScene("Credits");                      //On met la scène des Credits
+        SceneManager.LoadScene("Credits");                      //On met la scï¿½ne des Credits
     }
 
-    public void Main()                                            //Fonction pour charger la scène du Menu
+    public void Settings()                                      //Fonction pour charger la scï¿½ne des Credits
     {
-        SceneManager.LoadScene("Menu");                           //On met la scène du Menu
+        SceneManager.LoadScene("Settings");                      //On met la scï¿½ne des Credits
+    }
+
+    public void Main()                                            //Fonction pour charger la scï¿½ne du Menu
+    {
+        SceneManager.LoadScene("Menu");                           //On met la scï¿½ne du Menu
     }
 
     public void Quit()                                               //Fonction pour quitter le jeu 
