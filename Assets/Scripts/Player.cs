@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
+    [SerializeField] private int damages;
 
     private Animator animator;
     private Rigidbody2D rb2D;
     private Controls controls;
     private Vector2 direction;
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
+    private int health;
+    public float attackRange = 0.5f;
 
     private void OnEnable()
     {
@@ -42,6 +48,7 @@ public class Player : MonoBehaviour
         Attacking();
         animator.SetBool("attacking", true);
     }
+
     private void AttackCanceled(InputAction.CallbackContext obj)
     {
         animator.SetBool("attacking", false);
@@ -55,9 +62,27 @@ public class Player : MonoBehaviour
 
     private void Attacking()
     {
-        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            GetComponent<HPManager>();
+            enemy.GetComponent<HPManager>().HP -= damages;
+        }
+    }
 
-    }      
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    private void Update()
+    {
+        
+    }
+
+
 
     void FixedUpdate()
     {   

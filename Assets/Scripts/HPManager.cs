@@ -8,6 +8,8 @@ public class HPManager : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(HP);
+        if (HP == 0)
+            Destroy(gameObject);
     }
+
 }
