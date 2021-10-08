@@ -6,9 +6,16 @@ using UnityEngine.InputSystem;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private GameObject PauseMenuUI;  //On récupère l'UI du menu pause
-    [SerializeField] private GameObject WinUI;        //On récupère l'UI de victoire
+    [SerializeField] private GameObject PauseMenuUI;        //On récupère l'UI de victoire
     private static bool gamePaused = false;           //Variable pour savoir si le jeu est en pause (= fausse)
+    private Controls controls;
+
+    private void OnEnable()
+    {
+        controls = new Controls();
+        controls.Enable();
+        controls.Main.Pause.performed += PausePerformed;
+    }
 
     private void PausePerformed(InputAction.CallbackContext obj) //Fonction exécutée quand on appuie sur Echap
     {
@@ -27,7 +34,6 @@ public class Menu : MonoBehaviour
         PauseMenuUI.SetActive(true);                      //On active l'UI menu pause
         Time.timeScale = 0;                               //On arrête le temps (mouvement du joueur etc.)
         gamePaused = true;                                //On passe la variable gamePaused à vraie pour pouvoir désactiver le menu pause lorsqu'on rappuiera sur Echap
-        WinUI.SetActive(false);                           //On désactive l'UI de victoire (pour ne pas que les UI ne se superposent lorsque l'UI de victoire est affichée et qu'on appuie sur echap)
     }
 
     private void Resume()                                    //Fonction qui désactive l'UI du menu pause
