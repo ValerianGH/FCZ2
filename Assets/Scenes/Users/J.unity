@@ -1188,6 +1188,10 @@ MonoBehaviour:
   maxspeed: 20000
   damages: 5
   SpawnPoint: {fileID: 0}
+  HitboxG: {fileID: 1979534625}
+  HitboxD: {fileID: 1776117922}
+  HitboxU: {fileID: 554941463}
+  HitboxB: {fileID: 1009310763}
   attackPoint: {fileID: 1776117922}
   enemyLayers:
     serializedVersion: 2
@@ -1201,7 +1205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321963241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.7, y: 10.37, z: 0}
+  m_LocalPosition: {x: 16.6, y: 9.3, z: 0}
   m_LocalScale: {x: 57.698692, y: 60.92952, z: 1}
   m_Children:
   - {fileID: 1776117922}
