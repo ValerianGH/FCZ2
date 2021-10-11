@@ -9,7 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxspeed;
     [SerializeField] private int damages;
-    [SerializeField] Transform SpawnPoint;
+    [SerializeField] private Transform SpawnPoint;
+    [SerializeField] private Transform HitboxG;
+    [SerializeField] private Transform HitboxD;
+    [SerializeField] private Transform HitboxU;
+    [SerializeField] private Transform HitboxB;
 
     private Animator animator;
     private Rigidbody2D rb2D;
@@ -62,11 +66,13 @@ public class Player : MonoBehaviour
 
     private void Attacking()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach(Collider2D enemy in hitEnemies)
         {
-            GetComponent<HPManager>();
-            enemy.GetComponent<HPManager>().HP -= damages;
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                GetComponent<HPManager>();
+                enemy.GetComponent<HPManager>().HP -= damages;
+            }
         }
     }
 
@@ -79,10 +85,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(direction);
     }
-
-
 
     void FixedUpdate()
     {   

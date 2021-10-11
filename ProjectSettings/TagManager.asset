@@ -8,6 +8,8 @@ TagManager:
   - gauche
   - bas
   - haut
+  - PLAYER
+  - ENEMY
   layers:
   - Default
   - TransparentFX

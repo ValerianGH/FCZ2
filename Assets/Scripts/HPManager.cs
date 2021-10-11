@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HPManager : MonoBehaviour
 {
+    [SerializeField] private Transform SpawnPoint;
     public int HP;
     private int maxHP;
 
@@ -14,12 +15,17 @@ public class HPManager : MonoBehaviour
 
     void Update()
     {
-        if (HP == 0) // TOUS
+        if (HP == 0 & tag == "ENEMY") 
         {
-            Debug.Log(HP);
-            Destroy(gameObject); // enemy only
+            Destroy(gameObject);
         }
-        //transform.position = SpawnPoint.position; // player only
-        //HP = maxHP; // player only
+        else if(HP == 0 & tag == "PLAYER")
+        {
+            
+            transform.position = SpawnPoint.position;
+            HP = maxHP;
+        
+        }
+        Debug.Log(HP);
     }
 }
