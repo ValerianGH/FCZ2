@@ -66,36 +66,8 @@ public class Player : MonoBehaviour
 
     private void Attacking()
     {
-        if(HitboxD == true)
         {
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitboxB.position, attackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                GetComponent<HPManager>();
-                enemy.GetComponent<HPManager>().HP -= damages;
-            }
-        }
-        else if (HitboxG == true)
-        {
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitboxB.position, attackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                GetComponent<HPManager>();
-                enemy.GetComponent<HPManager>().HP -= damages;
-            }
-        }
-        else if (HitboxB == true)
-        {
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitboxB.position, attackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                GetComponent<HPManager>();
-                enemy.GetComponent<HPManager>().HP -= damages;
-            }
-        }
-        else if (HitboxU == true)
-        {
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitboxB.position, attackRange, enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
                 GetComponent<HPManager>();
@@ -114,9 +86,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Debug.Log(direction);
-        if (direction == Vector2.down)
-        {
-                   }
     }
 
     void FixedUpdate()
