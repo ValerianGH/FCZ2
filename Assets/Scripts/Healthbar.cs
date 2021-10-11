@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public SliderJoint2D slider;
+    public Slider slider;
     public Image fill;
 
     public void SetMaxHealth(int health)
