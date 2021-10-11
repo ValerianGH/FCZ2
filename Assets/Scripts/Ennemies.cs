@@ -12,6 +12,7 @@ public class Ennemies : MonoBehaviour
         if (GetComponent<HPManager>())
         {
             collision.GetComponent<HPManager>().HP -= damages;
+
             Destroy(objectToDestroy);
         }
     }

@@ -8,28 +8,20 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public SliderJoint2D slider;
+    public Slider slider;
     public Image fill;
+
+    private void Update()
+    {
+    }
 
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
         slider.value = health;
-
-        
-
-
     }
-
-
-
-
     public void SetHealth(int health)
     {
         slider.value = health;
     }
-
-
-
-
 }
